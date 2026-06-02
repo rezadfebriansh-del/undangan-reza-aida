@@ -1,0 +1,8 @@
+
+body{margin:0;background:#f8f2e8;font-family:Georgia,serif;color:#5d4b35}
+.cover{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(#fffaf2,#efe1c7);text-align:center}
+h1{color:#b08a3c}
+.card{background:white;margin:20px auto;max-width:850px;padding:25px;border-radius:18px;box-shadow:0 2px 12px rgba(0,0,0,.1)}
+#countdown{font-size:28px;font-weight:bold}
+button,.btn{background:#b08a3c;color:white;padding:12px 20px;border-radius:30px;text-decoration:none;border:none}
+footer{text-align:center;padding:40px}
