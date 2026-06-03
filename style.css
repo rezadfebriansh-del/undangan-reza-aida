@@ -6,14 +6,14 @@ box-sizing:border-box;
 
 body{
 
-background:url('background.png');
+background:url('background.jpg');
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
 
 font-family:'Cormorant Garamond',serif;
 
-color:#4b3b2d;
+color:#4d3b2d;
 }
 
 #cover{
@@ -23,30 +23,37 @@ height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
+
+padding:20px;
 }
 
-.cover-box{
+.cover-card{
 
-background:rgba(255,255,255,.8);
+background:rgba(255,255,255,.85);
 
 padding:40px;
 
-border-radius:20px;
+border-radius:25px;
 
 text-align:center;
+
+backdrop-filter:blur(5px);
 }
 
-.small{
-letter-spacing:5px;
-}
-
-.cover-box h1{
+.cover-card h1{
 
 font-family:'Great Vibes',cursive;
 
 font-size:80px;
 
-color:#b28b44;
+color:#b89045;
+}
+
+.small{
+
+letter-spacing:5px;
+
+font-size:14px;
 }
 
 button{
@@ -59,7 +66,7 @@ border:none;
 
 border-radius:30px;
 
-background:#b28b44;
+background:#b89045;
 
 color:white;
 
@@ -70,51 +77,58 @@ cursor:pointer;
 display:none;
 }
 
-.section{
-
-max-width:1000px;
-
-margin:auto;
-
-padding:80px 20px;
+.hero{
 
 text-align:center;
+
+padding:80px 20px;
 }
 
-.arab{
+.hero h2{
 
-font-size:50px;
+font-size:45px;
 
 margin-bottom:20px;
-}
-
-.name{
-
-font-family:'Great Vibes',cursive;
-
-font-size:70px;
-
-color:#b28b44;
 }
 
 .couple{
 
 display:flex;
 
-justify-content:space-between;
+justify-content:center;
 
 align-items:center;
 
-gap:40px;
+gap:80px;
+
+padding:80px 20px;
+
+text-align:center;
 
 flex-wrap:wrap;
 }
 
-.amp{
+.name{
 
-font-size:80px;
+font-family:'Great Vibes',cursive;
 
-color:#b28b44;
+font-size:65px;
+
+color:#b89045;
+}
+
+.and{
+
+font-size:90px;
+
+color:#b89045;
+}
+
+.countdown-box{
+
+text-align:center;
+
+padding:50px 20px;
 }
 
 #countdown{
@@ -123,95 +137,196 @@ font-size:35px;
 
 font-weight:bold;
 
-color:#b28b44;
+color:#b89045;
 }
 
-.event-box{
+.events{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
 
 max-width:1000px;
 
 margin:auto;
 
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:20px;
-
-padding:20px;
+padding:30px;
 }
 
-.event{
+.card{
 
-background:rgba(255,255,255,.75);
+background:rgba(255,255,255,.85);
 
-padding:25px;
+padding:30px;
+
+border-radius:25px;
+
+text-align:center;
+
+box-shadow:0 10px 20px rgba(0,0,0,.08);
+}
+
+.btn{
+
+display:inline-block;
+
+padding:12px 20px;
+
+background:#b89045;
+
+color:white;
+
+border-radius:30px;
+
+text-decoration:none;
+
+margin-top:15px;
+}
+
+.quote{
+
+padding:80px 20px;
+
+text-align:center;
+}
+
+.gallery{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:15px;
+
+max-width:1000px;
+
+margin:auto;
+
+padding:30px;
+}
+
+.gallery img{
+
+width:100%;
 
 border-radius:20px;
-
-border:1px solid #d9c299;
 }
 
-.gift-section{
+.gift{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
 
 max-width:1000px;
 
 margin:auto;
 
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:20px;
-
-padding:50px 20px;
+padding:30px;
 }
 
 .gift-card{
 
-background:rgba(255,255,255,.75);
+background:rgba(255,255,255,.85);
 
-padding:20px;
+padding:25px;
 
-border-radius:20px;
+border-radius:25px;
 
 text-align:center;
 }
 
 .gift-card img{
 
-max-width:250px;
-
 width:100%;
+max-width:250px;
+}
+
+footer{
+
+padding:100px 20px;
+
+text-align:center;
 }
 
 .footer-name{
 
 font-family:'Great Vibes',cursive;
 
-font-size:90px;
+font-size:80px;
 
-color:#b28b44;
+color:#b89045;
+}
 
-margin-top:40px;
+.petals{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+overflow:hidden;
+
+z-index:999;
+}
+
+.petal{
+
+position:absolute;
+
+width:20px;
+height:28px;
+
+background:#f7e7dc;
+
+border-radius:70% 0 70% 0;
+
+opacity:.7;
+
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+0%{
+transform:
+translateY(-50px)
+rotate(0deg);
+}
+
+100%{
+transform:
+translateY(110vh)
+translateX(120px)
+rotate(360deg);
+}
 }
 
 @media(max-width:768px){
+
+.events,
+.gift{
+grid-template-columns:1fr;
+}
+
+.gallery{
+grid-template-columns:1fr;
+}
 
 .name{
 font-size:45px;
 }
 
-.footer-name{
-font-size:60px;
-}
-
-.event-box,
-.gift-section{
-grid-template-columns:1fr;
-}
-
-.cover-box h1{
+.cover-card h1{
 font-size:55px;
 }
 
