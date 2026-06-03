@@ -11,7 +11,7 @@ background-size:cover;
 background-position:center;
 background-attachment:fixed;
 
-font-family:'le jour script',serif;
+font-family:'Cormorant Garamond',serif;
 
 color:#4d3b2d;
 }
@@ -29,7 +29,7 @@ padding:20px;
 
 .cover-card{
 
-background:rgba(255,255,255,.85);
+background:transparent;
 
 padding:40px;
 
@@ -42,7 +42,7 @@ backdrop-filter:blur(5px);
 
 .cover-card h1{
 
-font-family:'Great Vibes',cursive;
+font-family:'le jour',cursive;
 
 font-size:80px;
 
