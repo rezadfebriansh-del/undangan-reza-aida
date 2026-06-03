@@ -3,38 +3,57 @@ function openInvite(){
 document.getElementById("cover").style.display="none";
 document.getElementById("main").style.display="block";
 
-document.getElementById("musik").play();
+window.scrollTo(0,0);
 
 }
 
 const target =
 new Date("2026-07-03T08:00:00").getTime();
 
-setInterval(()=>{
+setInterval(function(){
 
-const now = new Date().getTime();
+const now =
+new Date().getTime();
 
-const diff = target - now;
+const distance =
+target-now;
 
-const d = Math.floor(diff/(1000*60*60*24));
-const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const m = Math.floor((diff%(1000*60*60))/(1000*60));
-const s = Math.floor((diff%(1000*60))/1000);
+const days =
+Math.floor(distance/(1000*60*60*24));
 
-document.getElementById("countdown").innerHTML =
-`${d} Hari ${h} Jam ${m} Menit ${s} Detik`;
+const hours =
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+const minutes =
+Math.floor((distance%(1000*60*60))/(1000*60));
+
+const seconds =
+Math.floor((distance%(1000*60))/1000);
+
+const el =
+document.getElementById("countdown");
+
+if(el){
+
+el.innerHTML=
+days+" Hari "+
+hours+" Jam "+
+minutes+" Menit "+
+seconds+" Detik";
+
+}
 
 },1000);
 
-const url =
+const params =
 new URLSearchParams(window.location.search);
 
 const tamu =
-url.get("to");
+params.get("to");
 
 if(tamu){
 
 document.getElementById("guestName").innerHTML =
-`Kepada Yth.<br><b>${tamu}</b>`;
+"Kepada Yth.<br><b>"+tamu+"</b>";
 
 }
