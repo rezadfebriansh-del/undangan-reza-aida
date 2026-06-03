@@ -1,10 +1,12 @@
 function openInvite(){
 
 document.getElementById("cover").style.display="none";
+
 document.getElementById("main").style.display="block";
 
-window.scrollTo(0,0);
+document.getElementById("bgmusic").play();
 
+window.scrollTo(0,0);
 }
 
 const target =
@@ -57,3 +59,32 @@ document.getElementById("guestName").innerHTML =
 "Kepada Yth.<br><b>"+tamu+"</b>";
 
 }
+
+const petals =
+document.querySelector('.petals');
+
+function createPetal(){
+
+const petal =
+document.createElement('div');
+
+petal.classList.add('petal');
+
+petal.style.left =
+Math.random()*100+'vw';
+
+petal.style.animationDuration =
+(8+Math.random()*5)+'s';
+
+petal.style.opacity =
+Math.random();
+
+petals.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},13000);
+
+}
+
+setInterval(createPetal,500);
