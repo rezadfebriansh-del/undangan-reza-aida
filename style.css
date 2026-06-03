@@ -5,46 +5,64 @@ box-sizing:border-box;
 }
 
 body{
-background:#f7f3ed;
-font-family:'Montserrat',sans-serif;
-color:#5c4c42;
+
+background:url('background.jpg');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+font-family:'Cormorant Garamond',serif;
+
+color:#4b3b2d;
 }
 
-.cover{
+#cover{
+
 height:100vh;
-background:url("bg.jpg") center/cover;
+
 display:flex;
 justify-content:center;
 align-items:center;
+}
+
+.cover-box{
+
+background:rgba(255,255,255,.8);
+
+padding:40px;
+
+border-radius:20px;
+
 text-align:center;
 }
 
-.overlay{
-background:rgba(255,255,255,.85);
-padding:40px;
-border-radius:20px;
-}
-
-h1{
-font-family:'Cormorant Garamond',serif;
-font-size:55px;
-color:#b89245;
-}
-
 .small{
-letter-spacing:4px;
-margin-bottom:15px;
+letter-spacing:5px;
 }
 
-button,.btn{
-display:inline-block;
+.cover-box h1{
+
+font-family:'Great Vibes',cursive;
+
+font-size:80px;
+
+color:#b28b44;
+}
+
+button{
+
 margin-top:20px;
-padding:12px 25px;
-background:#b89245;
-color:white;
+
+padding:14px 30px;
+
 border:none;
+
 border-radius:30px;
-text-decoration:none;
+
+background:#b28b44;
+
+color:white;
+
 cursor:pointer;
 }
 
@@ -52,99 +70,149 @@ cursor:pointer;
 display:none;
 }
 
-.hero{
-padding:120px 20px;
+.section{
+
+max-width:1000px;
+
+margin:auto;
+
+padding:80px 20px;
+
 text-align:center;
-background:linear-gradient(#fff,#f5efe6);
 }
 
-.card{
-max-width:900px;
-margin:25px auto;
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-animation:fade 1s ease;
+.arab{
+
+font-size:50px;
+
+margin-bottom:20px;
+}
+
+.name{
+
+font-family:'Great Vibes',cursive;
+
+font-size:70px;
+
+color:#b28b44;
 }
 
 .couple{
+
 display:flex;
-justify-content:space-around;
+
+justify-content:space-between;
+
 align-items:center;
+
+gap:40px;
+
 flex-wrap:wrap;
 }
 
-.photo{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-border:5px solid #d8c29f;
-}
+.amp{
 
-.heart{
-font-size:40px;
-color:#b89245;
-}
+font-size:80px;
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-}
-
-.gallery img{
-width:100%;
-border-radius:12px;
-}
-
-.qris{
-max-width:250px;
-display:block;
-margin:auto;
-}
-
-textarea{
-width:100%;
-height:120px;
-padding:15px;
-border:1px solid #ddd;
-border-radius:10px;
+color:#b28b44;
 }
 
 #countdown{
-font-size:30px;
+
+font-size:35px;
+
 font-weight:bold;
-text-align:center;
-color:#b89245;
+
+color:#b28b44;
 }
 
-footer{
-padding:60px;
+.event-box{
+
+max-width:1000px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+padding:20px;
+}
+
+.event{
+
+background:rgba(255,255,255,.75);
+
+padding:25px;
+
+border-radius:20px;
+
+border:1px solid #d9c299;
+}
+
+.gift-section{
+
+max-width:1000px;
+
+margin:auto;
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:20px;
+
+padding:50px 20px;
+}
+
+.gift-card{
+
+background:rgba(255,255,255,.75);
+
+padding:20px;
+
+border-radius:20px;
+
 text-align:center;
 }
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(20px);
+.gift-card img{
+
+max-width:250px;
+
+width:100%;
 }
-to{
-opacity:1;
-transform:translateY(0);
-}
+
+.footer-name{
+
+font-family:'Great Vibes',cursive;
+
+font-size:90px;
+
+color:#b28b44;
+
+margin-top:40px;
 }
 
 @media(max-width:768px){
 
-h1{
-font-size:42px;
+.name{
+font-size:45px;
 }
 
-.photo{
-width:140px;
-height:140px;
+.footer-name{
+font-size:60px;
+}
+
+.event-box,
+.gift-section{
+grid-template-columns:1fr;
+}
+
+.cover-box h1{
+font-size:55px;
 }
 
 }
