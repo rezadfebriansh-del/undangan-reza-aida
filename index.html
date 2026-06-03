@@ -8,35 +8,48 @@
 
 <link rel="stylesheet" href="style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-<div id="cover">
+<audio id="bgmusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-<div class="cover-box">
+<div class="petals"></div>
 
-<p class="small">THE WEDDING OF</p>
+<section id="cover">
 
-<h1>Reza & Aida</h1>
+    <div class="cover-card">
 
-<div id="guestName"></div>
+        <p class="small">
+            THE WEDDING OF
+        </p>
 
-<p>03 Juli 2026</p>
+        <h1>
+            Reza & Aida
+        </h1>
 
-<button onclick="openInvite()">
-Buka Undangan
-</button>
+        <div id="guestName"></div>
 
-</div>
+        <p>
+            03 Juli 2026
+        </p>
 
-</div>
+        <button onclick="openInvite()">
+            Buka Undangan
+        </button>
+
+    </div>
+
+</section>
 
 <div id="main">
 
-<section class="section">
+<section class="hero">
 
-<h2 class="arab">
+<h2>
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 </h2>
 
@@ -46,66 +59,60 @@ Assalamu'alaikum Warahmatullahi Wabarakatuh
 
 <p>
 Dengan memohon rahmat dan ridho Allah SWT,
-kami bermaksud menyelenggarakan akad nikah
-putra-putri kami tercinta.
+kami mengundang Bapak/Ibu/Saudara/i
+untuk hadir dan memberikan doa restu
+pada pernikahan kami.
 </p>
 
 </section>
 
-<section class="section">
-
-<div class="couple">
+<section class="couple">
 
 <div>
-<h1 class="name">
-Mochamad Reza
-</h1>
 
-<h1 class="name">
+<h2 class="name">
+Mochamad Reza
+<br>
 Febriansyah
-</h1>
+</h2>
 
 <p>
-Putra dari<br>
-Ibu Elly Sri Herliani
+Putra dari Ibu Elly Sri Herliani
 </p>
+
 </div>
 
-<div class="amp">&</div>
+<div class="and">&</div>
 
 <div>
 
-<h1 class="name">
+<h2 class="name">
 Nuraida
-</h1>
-
-<h1 class="name">
+<br>
 Febriani
-</h1>
+</h2>
 
 <p>
-Putri dari<br>
-Bapak Muhamad Yasin<br>
+Putri dari
+Bapak Muhamad Yasin
 dan Ibu Rini
 </p>
 
 </div>
 
-</div>
-
 </section>
 
-<section class="section">
+<section class="countdown-box">
 
-<h2>Countdown</h2>
+<h3>Menuju Hari Bahagia</h3>
 
 <div id="countdown"></div>
 
 </section>
 
-<section class="event-box">
+<section class="events">
 
-<div class="event">
+<div class="card">
 
 <h3>Akad Nikah</h3>
 
@@ -115,9 +122,16 @@ dan Ibu Rini
 
 <p>KUA Cinere</p>
 
+<a
+class="btn"
+href="https://maps.app.goo.gl/PJeTaxMU2qmSTnkPA"
+target="_blank">
+Buka Maps
+</a>
+
 </div>
 
-<div class="event">
+<div class="card">
 
 <h3>Selametan</h3>
 
@@ -126,8 +140,10 @@ dan Ibu Rini
 <p>13.00 WIB</p>
 
 <p>
-Jl. J. Salam No.49<br>
-Pangkalan Jati<br>
+Jl. J. Salam No.49
+<br>
+Pangkalan Jati
+<br>
 Cinere, Depok
 </p>
 
@@ -135,19 +151,26 @@ Cinere, Depok
 
 </section>
 
-<section class="section">
+<section class="quote">
 
-<h2>QS. Ar-Rum : 21</h2>
+<h2>QS. Ar Rum : 21</h2>
 
 <p>
-Dan di antara tanda-tanda kekuasaan-Nya ialah
-Dia menciptakan pasangan hidup untukmu
-agar kamu memperoleh ketenangan dan kasih sayang.
+Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan pasangan hidup untukmu agar kamu memperoleh ketenangan dan kasih sayang.
 </p>
 
 </section>
 
-<section class="gift-section">
+<section class="gallery">
+
+<img src="foto1.jpg">
+<img src="foto2.jpg">
+<img src="foto3.jpg">
+<img src="foto4.jpg">
+
+</section>
+
+<section class="gift">
 
 <div class="gift-card">
 
@@ -156,7 +179,8 @@ agar kamu memperoleh ketenangan dan kasih sayang.
 <img src="qris-reza.png">
 
 <p>
-BCA 1234567890<br>
+BCA 1234567890
+<br>
 a.n Mochamad Reza Febriansyah
 </p>
 
@@ -169,7 +193,8 @@ a.n Mochamad Reza Febriansyah
 <img src="qris-aida.png">
 
 <p>
-BCA 9876543210<br>
+BCA 9876543210
+<br>
 a.n Nuraida Febriani
 </p>
 
@@ -177,17 +202,15 @@ a.n Nuraida Febriani
 
 </section>
 
-<section class="section">
+<footer>
 
-<p>
-Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan memberikan doa restu kepada kedua mempelai.
-</p>
+<h2>Terima Kasih</h2>
 
-<h1 class="footer-name">
+<div class="footer-name">
 Reza & Aida
-</h1>
+</div>
 
-</section>
+</footer>
 
 </div>
 
