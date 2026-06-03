@@ -1,19 +1,35 @@
 function openInvite(){
 
+```
 document.getElementById("cover").style.display="none";
 
 document.getElementById("main").style.display="block";
 
-document.getElementById("bgmusic").play();
+const music =
+document.getElementById("bgmusic");
 
-window.scrollTo(0,0);
+if(music){
+    music.play().catch(()=>{});
 }
+
+window.scrollTo({
+    top:0,
+    behavior:"smooth"
+});
+```
+
+}
+
+/* ==========================
+COUNTDOWN
+========================== */
 
 const target =
 new Date("2026-07-03T08:00:00").getTime();
 
-setInterval(function(){
+function updateCountdown(){
 
+```
 const now =
 new Date().getTime();
 
@@ -37,15 +53,39 @@ document.getElementById("countdown");
 
 if(el){
 
-el.innerHTML=
-days+" Hari "+
-hours+" Jam "+
-minutes+" Menit "+
-seconds+" Detik";
+    el.innerHTML =
+
+    '<div class="time-box">'+
+    '<span>'+days+'</span>'+
+    '<small>Hari</small>'+
+    '</div>'+
+
+    '<div class="time-box">'+
+    '<span>'+hours+'</span>'+
+    '<small>Jam</small>'+
+    '</div>'+
+
+    '<div class="time-box">'+
+    '<span>'+minutes+'</span>'+
+    '<small>Menit</small>'+
+    '</div>'+
+
+    '<div class="time-box">'+
+    '<span>'+seconds+'</span>'+
+    '<small>Detik</small>'+
+    '</div>';
+}
+```
 
 }
 
-},1000);
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+/* ==========================
+NAMA TAMU
+========================== */
 
 const params =
 new URLSearchParams(window.location.search);
@@ -55,15 +95,28 @@ params.get("to");
 
 if(tamu){
 
-document.getElementById("guestName").innerHTML =
-"Kepada Yth.<br><b>"+tamu+"</b>";
+```
+document.getElementById("guestName")
+.innerHTML=
+
+"Kepada Yth.<br><strong>"
++ tamu +
+"</strong>";
+```
 
 }
 
-const petals =
+/* ==========================
+FALLING PETALS
+========================== */
+
+const petalsContainer =
 document.querySelector('.petals');
 
 function createPetal(){
+
+```
+if(!petalsContainer) return;
 
 const petal =
 document.createElement('div');
@@ -71,20 +124,58 @@ document.createElement('div');
 petal.classList.add('petal');
 
 petal.style.left =
-Math.random()*100+'vw';
+Math.random()*100 + 'vw';
 
 petal.style.animationDuration =
-(8+Math.random()*5)+'s';
+(8 + Math.random()*6) + 's';
 
 petal.style.opacity =
-Math.random();
+0.3 + Math.random()*0.7;
 
-petals.appendChild(petal);
+petal.style.transform =
+'rotate('+Math.random()*360+'deg)';
+
+petalsContainer.appendChild(petal);
 
 setTimeout(()=>{
-petal.remove();
-},13000);
+    petal.remove();
+},15000);
+```
 
 }
 
-setInterval(createPetal,500);
+setInterval(createPetal,600);
+
+/* ==========================
+SCROLL FADE
+========================== */
+
+const observer =
+new IntersectionObserver(entries=>{
+
+```
+entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+
+        entry.target.classList.add('show');
+    }
+
+});
+```
+
+},{
+threshold:0.15
+});
+
+document
+.querySelectorAll('section,.card,.gift-card')
+.forEach(el=>{
+
+```
+el.classList.add('hidden');
+
+observer.observe(el);
+```
+
+});
