@@ -37,7 +37,10 @@ border-radius:25px;
 
 text-align:center;
 
-backdrop-filter:blur(5px);
+backdrop-filter:none;
+
+-webkit-backdrop-filter:none;
+
 }
 
 .cover-card h1{
