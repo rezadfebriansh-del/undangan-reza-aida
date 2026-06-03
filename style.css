@@ -5,74 +5,41 @@ box-sizing:border-box;
 }
 
 body{
-
-background:url('background.jpg');
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-
 font-family:'Cormorant Garamond',serif;
-
+background:url('background.jpg') center center/cover fixed;
 color:#4d3b2d;
 }
 
 #cover{
-
 height:100vh;
-
 display:flex;
 justify-content:center;
 align-items:center;
-
+text-align:center;
 padding:20px;
 }
 
-.cover-card{
-
-background:transparent;
-
-padding:40px;
-
-border-radius:25px;
-
-text-align:center;
-
-backdrop-filter:none;
-
--webkit-backdrop-filter:none;
-
-}
-
-.cover-card h1{
-
-font-family:'le jour script',cursive !important;
-
+.cover-content h1{
+font-family:'Great Vibes',cursive;
 font-size:80px;
-
 color:#b89045;
 }
 
 .small{
+letter-spacing:4px;
+margin-bottom:10px;
+}
 
-letter-spacing:5px;
-
-font-size:14px;
+.date{
+margin:15px 0;
 }
 
 button{
-
-margin-top:20px;
-
 padding:14px 30px;
-
 border:none;
-
 border-radius:30px;
-
 background:#b89045;
-
-color:white;
-
+color:#fff;
 cursor:pointer;
 }
 
@@ -80,354 +47,119 @@ cursor:pointer;
 display:none;
 }
 
-.hero{
-
+.hero,
+.countdown-section,
+footer{
 text-align:center;
-
 padding:80px 20px;
-}
-
-.hero h2{
-
-font-size:45px;
-
-margin-bottom:20px;
 }
 
 .couple{
-
 display:flex;
-
 justify-content:center;
-
 align-items:center;
-
-gap:80px;
-
+gap:60px;
 padding:80px 20px;
-
 text-align:center;
-
 flex-wrap:wrap;
 }
 
 .name{
-
 font-family:'Great Vibes',cursive;
-
-font-size:65px;
-
+font-size:60px;
 color:#b89045;
 }
 
 .and{
-
-font-size:90px;
-
+font-size:70px;
 color:#b89045;
-}
-
-.countdown-box{
-
-text-align:center;
-
-padding:50px 20px;
 }
 
 #countdown{
-
-font-size:35px;
-
+font-size:32px;
 font-weight:bold;
-
-color:#b89045;
 }
 
-.events{
-
+.events,
+.gift{
 display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:25px;
-
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
 max-width:1000px;
-
 margin:auto;
-
-padding:30px;
+padding:20px;
 }
 
 .card{
-
 background:rgba(255,255,255,.85);
-
-padding:30px;
-
-border-radius:25px;
-
-text-align:center;
-
-box-shadow:0 10px 20px rgba(0,0,0,.08);
-}
-
-.btn{
-
-display:inline-block;
-
-padding:12px 20px;
-
-background:#b89045;
-
-color:white;
-
-border-radius:30px;
-
-text-decoration:none;
-
-margin-top:15px;
-}
-
-.quote{
-
-padding:80px 20px;
-
+padding:25px;
+border-radius:20px;
 text-align:center;
 }
 
 .gallery{
-
 display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:15px;
-
 max-width:1000px;
-
 margin:auto;
-
-padding:30px;
+padding:20px;
 }
 
 .gallery img{
-
 width:100%;
-
 border-radius:20px;
+display:block;
 }
 
-.gift{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:25px;
-
-max-width:1000px;
-
-margin:auto;
-
-padding:30px;
-}
-
-.gift-card{
-
-background:rgba(255,255,255,.85);
-
-padding:25px;
-
-border-radius:25px;
-
-text-align:center;
-}
-
-.gift-card img{
-
-width:100%;
+.gift img{
 max-width:250px;
-}
-
-footer{
-
-padding:100px 20px;
-
-text-align:center;
+width:100%;
 }
 
 .footer-name{
-
 font-family:'Great Vibes',cursive;
-
-font-size:80px;
-
+font-size:70px;
 color:#b89045;
 }
 
 .petals{
-
 position:fixed;
-
 top:0;
 left:0;
-
 width:100%;
 height:100%;
-
 pointer-events:none;
-
 overflow:hidden;
-
 z-index:999;
 }
 
 .petal{
-
 position:absolute;
-
-width:20px;
-height:28px;
-
+width:18px;
+height:24px;
 background:#f7e7dc;
-
 border-radius:70% 0 70% 0;
-
-opacity:.7;
-
 animation:fall linear forwards;
 }
 
 @keyframes fall{
-
 0%{
-transform:
-translateY(-50px)
-rotate(0deg);
+transform:translateY(-40px) rotate(0deg);
 }
-
 100%{
-transform:
-translateY(110vh)
-translateX(120px)
-rotate(360deg);
+transform:translateY(110vh) rotate(360deg);
 }
 }
 
 @media(max-width:768px){
 
-.events,
-.gift{
-grid-template-columns:1fr;
-}
-
-.gallery{
-grid-template-columns:1fr;
-}
-
-.name{
-font-size:45px;
-}
-
-.cover-card h1{
+.cover-content h1{
 font-size:55px;
 }
 
+.name{
+font-size:42px;
 }
-/* ==========================
-COUNTDOWN PREMIUM
-========================== */
-
-#countdown{
-
-```
-display:flex;
-
-justify-content:center;
-
-gap:15px;
-
-flex-wrap:wrap;
-
-margin-top:25px;
-```
-
-}
-
-.time-box{
-
-```
-width:95px;
-
-height:95px;
-
-background:
-rgba(255,255,255,.85);
-
-border-radius:20px;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-box-shadow:
-0 10px 25px rgba(0,0,0,.08);
-
-border:
-1px solid rgba(184,144,69,.25);
-```
-
-}
-
-.time-box span{
-
-```
-font-size:30px;
-
-font-weight:700;
-
-color:#b89045;
-```
-
-}
-
-.time-box small{
-
-```
-font-size:14px;
-```
-
-}
-
-/* ==========================
-ANIMASI SCROLL
-========================== */
-
-.hidden{
-
-```
-opacity:0;
-
-transform:
-translateY(50px);
-
-transition:
-all .8s ease;
-```
-
-}
-
-.show{
-
-```
-opacity:1;
-
-transform:
-translateY(0);
-```
 
 }
