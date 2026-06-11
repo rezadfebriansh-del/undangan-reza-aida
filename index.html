@@ -259,61 +259,65 @@
 	</section>
 
 
-    <section class="gift">
+	<section class="gift">
 
-        <div class="card full-card">
+    <div class="gift-header">
+        <div class="ornament">❦</div>
+        <h2>Wedding Gift</h2>
+        <p class="gift-text">
+            Dengan penuh rasa syukur, kami menerima doa dan tanda kasih Bapak/Ibu/Saudara/i.
+        </p>
+    </div>
 
-            <div class="ornament">❦</div>
+    <div class="gift-cards">
 
-            <h2>
-                Wedding Gift
-            </h2>
+        <!-- CARD 1 -->
+        <div class="bank-card">
 
-            <p class="gift-text">
-                Dengan penuh rasa syukur,
-                kami menerima setiap bentuk perhatian
-                dan doa yang diberikan.
-            </p>
+            <div class="bank-top">
+                <div class="chip"></div>
+                <div class="bank-name">Bank Syariah Indonesia</div>
+            </div>
 
-        </div>
-
-        <div class="card">
-
-            <h3>Bank Syariah Indonesia</h3>
-
-            <p class="rekening">
+            <div class="bank-number" id="rekReza">
                 7166873589
-            </p>
+            </div>
 
-            <p>
+            <div class="bank-owner">
                 a.n. Mochamad Reza Febriansyah
-            </p>
+            </div>
 
-            <button type="button" onclick="copyReza()">
-                Salin Rekening
+            <button class="copy-btn" onclick="copyBank(this,'7166873589','Rekening Reza')">
+                Copy Number
             </button>
 
         </div>
 
-        <div class="card">
+        <!-- CARD 2 -->
+        <div class="bank-card">
 
-            <h3>Bank Syariah Indonesia</h3>
+            <div class="bank-top">
+                <div class="chip"></div>
+                <div class="bank-name">Bank Syariah Indonesia</div>
+            </div>
 
-            <p class="rekening">
+            <div class="bank-number">
                 7324707098
-            </p>
+            </div>
 
-            <p>
+            <div class="bank-owner">
                 a.n. Nuraida Febriani
-            </p>
+            </div>
 
-            <button type="button" onclick="copyAida()">
-                Salin Rekening
+            <button class="copy-btn" onclick="copyBank(this,'7324707098','Rekening Aida')">
+                Copy Number
             </button>
 
         </div>
 
-    </section>
+    </div>
+
+	</section>	
 
     <footer>
 
