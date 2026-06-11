@@ -210,6 +210,100 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }, 13000);
     }
+	renderWishes();
 
     setInterval(createPetal, 600);
 });
+function addWish(){
+
+```
+const name =
+    document.getElementById("wishName");
+
+const message =
+    document.getElementById("wishMessage");
+
+const list =
+    document.getElementById("wishList");
+
+if(!name || !message || !list) return;
+
+const nama =
+    name.value.trim();
+
+const pesan =
+    message.value.trim();
+
+if(nama === "" || pesan === ""){
+    return;
+}
+
+const wish = {
+    name: nama,
+    message: pesan
+};
+
+const wishes =
+    JSON.parse(
+        localStorage.getItem("wishes") || "[]"
+    );
+
+wishes.unshift(wish);
+
+localStorage.setItem(
+    "wishes",
+    JSON.stringify(wishes)
+);
+
+renderWishes();
+
+name.value = "";
+message.value = "";
+```
+
+}
+
+function renderWishes(){
+
+```
+const list =
+    document.getElementById("wishList");
+
+if(!list) return;
+
+list.innerHTML = "";
+
+const wishes =
+    JSON.parse(
+        localStorage.getItem("wishes") || "[]"
+    );
+
+wishes.forEach(function(wish){
+
+    const avatar =
+        wish.name.charAt(0).toUpperCase();
+
+    const item =
+        document.createElement("div");
+
+    item.className =
+        "wish-item fade-in";
+
+    item.innerHTML =
+        '<div class="wish-top">' +
+            '<div class="wish-avatar">' +
+                avatar +
+            '</div>' +
+            '<div class="wish-name">' +
+                wish.name +
+            '</div>' +
+        '</div>' +
+        '<div class="wish-message">' +
+            wish.message +
+        '</div>';
+
+    list.appendChild(item);
+});
+```
+
+}
