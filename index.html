@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -18,274 +17,282 @@
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
+<button id="musicBtn" class="music-btn" type="button">
+    ♪
+</button>
+
 <div class="petals"></div>
 
 <section id="cover">
 
+    <div class="cover-content">
 
-<div class="cover-content">
+        <div class="ornament">❦</div>
 
-    <p class="small">THE WEDDING OF</p>
+        <p class="small">
+            THE WEDDING OF
+        </p>
 
-    <h1>Reza & Aida</h1>
+        <h1>
+            Reza & Aida
+        </h1>
 
-    <div id="guestName">
-        Kepada Yth. Bapak/Ibu/Saudara/i
+        <div id="guestName">
+            Kepada Yth. Bapak/Ibu/Saudara/i
+        </div>
+
+        <p class="date">
+            Jumat, 03 Juli 2026
+        </p>
+
+        <button type="button" onclick="openInvite()">
+            Buka Undangan
+        </button>
+
     </div>
-
-    <p class="date">
-        Jumat, 03 Juli 2026
-    </p>
-
-    <button type="button" onclick="openInvite()">
-        Buka Undangan
-    </button>
-
-</div>
-
 
 </section>
 
 <main id="main">
 
+    <section class="hero">
 
-<section class="hero">
+        <div class="ornament">❦</div>
 
-    <h2>
-        Assalamu'alaikum Warahmatullahi Wabarakatuh
-    </h2>
-
-    <p>
-        Dengan memohon rahmat dan ridho Allah SWT,
-        kami mengundang Bapak/Ibu/Saudara/i
-        untuk hadir pada acara pernikahan kami.
-    </p>
-
-</section>
-
-<section class="couple">
-
-    <div>
-
-        <h2 class="name">
-            Mochamad Reza<br>
-            Febriansyah
+        <h2>
+            Assalamu'alaikum Warahmatullahi Wabarakatuh
         </h2>
 
         <p>
-            Putra dari Ibu Elly Sri Herliani
+            Dengan memohon rahmat dan ridho Allah SWT,
+            kami mengundang Bapak/Ibu/Saudara/i
+            untuk hadir pada acara pernikahan kami.
         </p>
 
-    </div>
+    </section>
 
-    <div class="and">&</div>
+    <section class="couple">
 
-    <div>
+        <div class="person">
 
-        <h2 class="name">
-            Nuraida<br>
-            Febriani
+            <div class="photo-placeholder"></div>
+
+            <h2 class="name">
+                Mochamad Reza<br>
+                Febriansyah
+            </h2>
+
+            <p>
+                Putra dari Ibu Elly Sri Herliani
+            </p>
+
+        </div>
+
+        <div class="and">&</div>
+
+        <div class="person">
+
+            <div class="photo-placeholder"></div>
+
+            <h2 class="name">
+                Nuraida<br>
+                Febriani
+            </h2>
+
+            <p>
+                Putri dari Bapak Muhamad Yasin<br>
+                dan Ibu Rini
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="countdown-section">
+
+        <div class="ornament">❦</div>
+
+        <h2>
+            Menuju Hari Bahagia
+        </h2>
+
+        <div class="countdown-boxes">
+
+            <div class="time-box">
+                <span id="days">0</span>
+                <small>Hari</small>
+            </div>
+
+            <div class="time-box">
+                <span id="hours">0</span>
+                <small>Jam</small>
+            </div>
+
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <small>Menit</small>
+            </div>
+
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <small>Detik</small>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="events">
+
+        <div class="card">
+
+            <div class="event-icon">🕌</div>
+
+            <h3>Akad Nikah</h3>
+
+            <p>Jumat, 03 Juli 2026</p>
+
+            <p>10.00 WIB - Selesai</p>
+
+            <p>KUA Cinere</p>
+
+        </div>
+
+        <div class="card">
+
+            <div class="event-icon">🏡</div>
+
+            <h3>Resepsi</h3>
+
+            <p>Jumat, 03 Juli 2026</p>
+
+            <p>13.00 WIB - Selesai</p>
+
+            <p>
+                Jl. H. Salam No.49<br>
+                Pangkalan Jati<br>
+                Cinere, Depok
+            </p>
+
+            <br>
+
+            <a
+            class="map-btn"
+            href="https://goo.gl/maps/hSpFQMkFGRuxG2uR8"
+            target="_blank">
+                📍 Buka Lokasi
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="rsvp-section">
+
+        <div class="ornament">❦</div>
+
+        <h2>
+            Konfirmasi Kehadiran
         </h2>
 
         <p>
-            Putri dari Bapak Muhamad Yasin<br>
-            dan Ibu Rini
+            Kami akan sangat berbahagia apabila
+            Bapak/Ibu/Saudara/i berkenan hadir.
         </p>
 
-    </div>
+        <div class="rsvp-buttons">
 
-</section>
+            <a
+            class="wa-btn"
+            href="https://wa.me/628170220001"
+            target="_blank">
+                WhatsApp Reza
+            </a>
 
-<section class="countdown-section">
+            <a
+            class="wa-btn"
+            href="https://wa.me/6285810008650"
+            target="_blank">
+                WhatsApp Aida
+            </a>
 
-    <!-- Tambahkan tepat setelah <audio> -->
+        </div>
 
-<button id="musicBtn" class="music-btn" type="button">
-    🎵 Musik
-</button>
+    </section>
 
-<!-- Bagian Countdown -->
+    <section class="gift">
 
-<section class="countdown-section">
+        <div class="card full-card">
 
-```
-<h2>Menuju Hari Bahagia</h2>
+            <div class="ornament">❦</div>
 
-<div id="countdown" class="countdown-boxes">
+            <h2>
+                Wedding Gift
+            </h2>
 
-    <div class="time-box">
-        <span id="days">0</span>
-        <small>Hari</small>
-    </div>
+            <p class="gift-text">
+                Dengan penuh rasa syukur,
+                kami menerima setiap bentuk perhatian
+                dan doa yang diberikan.
+            </p>
 
-    <div class="time-box">
-        <span id="hours">0</span>
-        <small>Jam</small>
-    </div>
+        </div>
 
-    <div class="time-box">
-        <span id="minutes">0</span>
-        <small>Menit</small>
-    </div>
+        <div class="card">
 
-    <div class="time-box">
-        <span id="seconds">0</span>
-        <small>Detik</small>
-    </div>
+            <h3>Bank Syariah Indonesia</h3>
 
-</div>
-```
+            <p class="rekening">
+                7166873589
+            </p>
 
-</section>
+            <p>
+                a.n. Mochamad Reza Febriansyah
+            </p>
 
-<!-- Bagian Event -->
+            <button type="button" onclick="copyReza()">
+                Salin Rekening
+            </button>
 
-<section class="events">
+        </div>
 
-```
-<div class="card">
+        <div class="card">
 
-    <h3>Akad Nikah</h3>
+            <h3>Bank Syariah Indonesia</h3>
 
-    <p>Jumat, 03 Juli 2026</p>
+            <p class="rekening">
+                7324707098
+            </p>
 
-    <p>10.00 WIB - Selesai</p>
+            <p>
+                a.n. Nuraida Febriani
+            </p>
 
-    <p>KUA Cinere</p>
+            <button type="button" onclick="copyAida()">
+                Salin Rekening
+            </button>
 
-</div>
+        </div>
 
-<div class="card">
+    </section>
 
-    <h3>Selametan</h3>
+    <footer>
 
-    <p>Jumat, 03 Juli 2026</p>
+        <p class="quote">
+            "Dan di antara tanda-tanda kekuasaan-Nya,
+            Dia menciptakan untukmu pasangan hidup
+            dari jenismu sendiri."
+        </p>
 
-    <p>13.00 WIB - Selesai</p>
+        <p>
+            QS. Ar-Rum : 21
+        </p>
 
-    <p>
-        Jl. H. Salam No.49<br>
-        Pangkalan Jati<br>
-        Cinere, Depok
-    </p>
+        <div class="footer-name">
+            Reza & Aida
+        </div>
 
-    <br>
-
-    <a
-    class="map-btn"
-    href="https://goo.gl/maps/hSpFQMkFGRuxG2uR8"
-    target="_blank">
-    📍 Buka Lokasi
-    </a>
-
-</div>
-```
-
-</section>
-
-<!-- RSVP -->
-
-<section class="gift">
-
-```
-<div class="card">
-
-    <h3>Konfirmasi Kehadiran</h3>
-
-    <p>
-        Silakan hubungi salah satu mempelai
-    </p>
-
-    <br>
-
-    <a
-    class="wa-btn"
-    href="https://wa.me/628170220001"
-    target="_blank">
-    RSVP Reza
-    </a>
-
-    <br><br>
-
-    <a
-    class="wa-btn"
-    href="https://wa.me/6285810008650"
-    target="_blank">
-    RSVP Aida
-    </a>
-
-</div>
-```
-
-</section>
-
-<!-- Wedding Gift -->
-
-<section class="gift">
-
-```
-<div class="card">
-
-    <h2>Wedding Gift</h2>
-
-    <p>
-        Doa restu Anda merupakan hadiah terindah bagi kami.
-        Namun apabila ingin memberikan tanda kasih,
-        dapat melalui rekening berikut:
-    </p>
-
-    <br>
-
-    <h3>BSI</h3>
-
-    <p class="rekening">
-        7166873589
-    </p>
-
-    <p>
-        a.n. Mochamad Reza Febriansyah
-    </p>
-
-    <button type="button" onclick="copyReza()">
-        Salin Rekening
-    </button>
-
-</div>
-
-<div class="card">
-
-    <h3>BSI</h3>
-
-    <p class="rekening">
-        7324707098
-    </p>
-
-    <p>
-        a.n. Nuraida Febriani
-    </p>
-
-    <button type="button" onclick="copyAida()">
-        Salin Rekening
-    </button>
-
-</div>
-```
-
-</section>
-
-
-</section>
-
-<footer>
-
-    <h2>Terima Kasih</h2>
-
-    <div class="footer-name">
-        Reza & Aida
-    </div>
-
-</footer>
-
+    </footer>
 
 </main>
 
