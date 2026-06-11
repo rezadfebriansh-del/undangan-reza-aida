@@ -1,188 +1,215 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+// =========================
+// OPEN INVITATION
+// =========================
+
+function openInvite() {
+
+    const cover = document.getElementById("cover");
+    const main = document.getElementById("main");
+    const music = document.getElementById("bgmusic");
+
+    if (cover) {
+        cover.style.display = "none";
+    }
+
+    if (main) {
+        main.style.display = "block";
+    }
+
+    if (music) {
+        music.play().catch(function () {});
+    }
 }
 
-body{
-font-family:'Cormorant Garamond',serif;
-background:url('background.jpg') center center/cover fixed;
-color:#4d3b2d;
+// =========================
+// COPY REKENING
+// =========================
+
+function copyReza() {
+
+    navigator.clipboard.writeText("7166873589")
+    .then(function () {
+        alert("Nomor rekening Reza berhasil disalin");
+    })
+    .catch(function () {
+        alert("Gagal menyalin rekening");
+    });
 }
 
-#cover{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
+function copyAida() {
+
+    navigator.clipboard.writeText("7324707098")
+    .then(function () {
+        alert("Nomor rekening Aida berhasil disalin");
+    })
+    .catch(function () {
+        alert("Gagal menyalin rekening");
+    });
 }
 
-.cover-content{
-background:rgba(255,255,255,.75);
-padding:40px;
-border-radius:25px;
-backdrop-filter:blur(5px);
-}
+// =========================
+// DOM LOADED
+// =========================
 
-.cover-content h1{
-font-family:'Great Vibes',cursive;
-font-size:80px;
-color:#b89045;
-}
+document.addEventListener("DOMContentLoaded", function () {
 
-.small{
-letter-spacing:4px;
-margin-bottom:10px;
-}
+    // =====================
+    // NAMA TAMU
+    // =====================
 
-.date{
-margin:15px 0;
-}
+    const params = new URLSearchParams(window.location.search);
+    const tamu = params.get("to");
 
-button{
-padding:14px 30px;
-border:none;
-border-radius:30px;
-background:#b89045;
-color:#fff;
-cursor:pointer;
-}
+    const guestName =
+        document.getElementById("guestName");
 
-button:hover{
-opacity:.9;
-}
+    if (tamu && guestName) {
 
-#main{
-display:none;
-}
+        guestName.innerHTML =
+            "Kepada Yth.<br><b>" +
+            decodeURIComponent(tamu) +
+            "</b>";
+    }
 
-.hero,
-.countdown-section,
-footer{
-text-align:center;
-padding:80px 20px;
-}
+    // =====================
+    // COUNTDOWN
+    // =====================
 
-.couple{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:60px;
-padding:80px 20px;
-text-align:center;
-flex-wrap:wrap;
-}
+    const targetDate =
+        new Date("2026-07-03T10:00:00").getTime();
 
-.name{
-font-family:'Great Vibes',cursive;
-font-size:60px;
-color:#b89045;
-}
+    function updateCountdown() {
 
-.and{
-font-size:70px;
-color:#b89045;
-}
+        const now =
+            new Date().getTime();
 
-#countdown{
-font-size:32px;
-font-weight:bold;
-margin-top:20px;
-}
+        const distance =
+            targetDate - now;
 
-.events,
-.gift{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
-max-width:1000px;
-margin:auto;
-padding:20px;
-}
+        if (distance < 0) {
 
-.card{
-background:rgba(255,255,255,.85);
-padding:25px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 5px 15px rgba(0,0,0,.1);
-}
+            document.getElementById("days").textContent = "0";
+            document.getElementById("hours").textContent = "0";
+            document.getElementById("minutes").textContent = "0";
+            document.getElementById("seconds").textContent = "0";
 
-.card h3{
-margin-bottom:10px;
-color:#b89045;
-}
+            return;
+        }
 
-.card p{
-line-height:1.8;
-}
+        const days =
+            Math.floor(distance / (1000 * 60 * 60 * 24));
 
-.rekening{
-font-size:26px;
-font-weight:bold;
-color:#b89045;
-margin:15px 0;
-}
+        const hours =
+            Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                /
+                (1000 * 60 * 60)
+            );
 
-.footer-name{
-font-family:'Great Vibes',cursive;
-font-size:70px;
-color:#b89045;
-}
+        const minutes =
+            Math.floor(
+                (distance % (1000 * 60 * 60))
+                /
+                (1000 * 60)
+            );
 
-.petals{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:999;
-}
+        const seconds =
+            Math.floor(
+                (distance % (1000 * 60))
+                /
+                1000
+            );
 
-.petal{
-position:absolute;
-width:18px;
-height:24px;
-background:#f7e7dc;
-border-radius:70% 0 70% 0;
-animation:fall linear forwards;
-}
+        const dayEl =
+            document.getElementById("days");
 
-@keyframes fall{
-0%{
-transform:translateY(-40px) rotate(0deg);
-opacity:1;
-}
-100%{
-transform:translateY(110vh) rotate(360deg);
-opacity:.2;
-}
-}
+        const hourEl =
+            document.getElementById("hours");
 
-@media(max-width:768px){
+        const minuteEl =
+            document.getElementById("minutes");
 
-.cover-content h1{
-font-size:55px;
-}
+        const secondEl =
+            document.getElementById("seconds");
 
-.name{
-font-size:42px;
-}
+        if (dayEl) dayEl.textContent = days;
+        if (hourEl) hourEl.textContent = hours;
+        if (minuteEl) minuteEl.textContent = minutes;
+        if (secondEl) secondEl.textContent = seconds;
+    }
 
-.and{
-font-size:50px;
-}
+    updateCountdown();
 
-#countdown{
-font-size:24px;
-}
+    setInterval(updateCountdown, 1000);
 
-.footer-name{
-font-size:50px;
-}
+    // =====================
+    // MUSIC BUTTON
+    // =====================
 
-}
+    const music =
+        document.getElementById("bgmusic");
+
+    const musicBtn =
+        document.getElementById("musicBtn");
+
+    let playing = false;
+
+    if (musicBtn && music) {
+
+        musicBtn.addEventListener("click", function () {
+
+            if (playing) {
+
+                music.pause();
+
+                musicBtn.innerHTML = "♪";
+
+                playing = false;
+
+            } else {
+
+                music.play().catch(function () {});
+
+                musicBtn.innerHTML = "❚❚";
+
+                playing = true;
+            }
+        });
+    }
+
+    // =====================
+    // PETALS
+    // =====================
+
+    const petalsContainer =
+        document.querySelector(".petals");
+
+    function createPetal() {
+
+        if (!petalsContainer) return;
+
+        const petal =
+            document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+        petal.style.opacity =
+            (0.4 + Math.random() * 0.6);
+
+        petal.style.animationDuration =
+            (8 + Math.random() * 5) + "s";
+
+        petalsContainer.appendChild(petal);
+
+        setTimeout(function () {
+
+            petal.remove();
+
+        }, 13000);
+    }
+
+    setInterval(createPetal, 600);
+});
