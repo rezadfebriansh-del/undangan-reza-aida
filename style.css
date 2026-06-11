@@ -147,6 +147,88 @@ footer{
     font-size:20px;
 }
 
+.wishes-section{
+    text-align:center;
+}
+
+.wish-form{
+    max-width:700px;
+    margin:30px auto;
+}
+
+.wish-form input,
+.wish-form textarea{
+
+    width:100%;
+
+    margin-bottom:15px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.25);
+
+    backdrop-filter:blur(10px);
+
+    font-family:inherit;
+
+    font-size:18px;
+}
+
+.wish-form textarea{
+    min-height:120px;
+    resize:none;
+}
+
+.wish-list{
+    max-width:900px;
+    margin:auto;
+}
+
+.wish-item{
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    margin-bottom:15px;
+
+    text-align:left;
+}
+
+.wish-name{
+    font-weight:bold;
+    color:#b89045;
+    margin-bottom:10px;
+}
+
+.gift-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.gift-cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+
+    max-width:900px;
+
+    margin:auto;
+}
+
+
 /* COUPLE */
 
 .couple{
@@ -548,4 +630,60 @@ footer{
     .gift-text{
         font-size:18px;
     }
+}
+.wish-top{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:12px;
+}
+
+.wish-avatar{
+width:45px;
+height:45px;
+
+```
+border-radius:50%;
+
+background:
+linear-gradient(
+    135deg,
+    #d4af37,
+    #b89045
+);
+
+color:#fff;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-weight:bold;
+font-size:18px;
+```
+
+}
+
+.wish-message{
+line-height:1.7;
+}
+
+.fade-in{
+animation:fadeWish .5s ease;
+}
+
+@keyframes fadeWish{
+
+```
+from{
+    opacity:0;
+    transform:translateY(15px);
+}
+
+to{
+    opacity:1;
+    transform:translateY(0);
+}
+```
+
 }
