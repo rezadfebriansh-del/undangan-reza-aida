@@ -1,8 +1,12 @@
+// =========================
+// OPEN INVITATION
+// =========================
+
 function openInvite() {
 
-    var cover = document.getElementById("cover");
-    var main = document.getElementById("main");
-    var music = document.getElementById("bgmusic");
+    const cover = document.getElementById("cover");
+    const main = document.getElementById("main");
+    const music = document.getElementById("bgmusic");
 
     if (cover) {
         cover.style.display = "none";
@@ -13,88 +17,199 @@ function openInvite() {
     }
 
     if (music) {
-        music.play().catch(function(){});
+        music.play().catch(function () {});
     }
 }
 
+// =========================
+// COPY REKENING
+// =========================
+
 function copyReza() {
-    navigator.clipboard.writeText("7166873589");
-    alert("Nomor rekening Reza berhasil disalin");
+
+    navigator.clipboard.writeText("7166873589")
+    .then(function () {
+        alert("Nomor rekening Reza berhasil disalin");
+    })
+    .catch(function () {
+        alert("Gagal menyalin rekening");
+    });
 }
 
 function copyAida() {
-    navigator.clipboard.writeText("7324707098");
-    alert("Nomor rekening Aida berhasil disalin");
+
+    navigator.clipboard.writeText("7324707098")
+    .then(function () {
+        alert("Nomor rekening Aida berhasil disalin");
+    })
+    .catch(function () {
+        alert("Gagal menyalin rekening");
+    });
 }
 
-function updateCountdown() {
+// =========================
+// DOM LOADED
+// =========================
 
-    var el = document.getElementById("countdown");
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (!el) {
-        return;
+    // =====================
+    // NAMA TAMU
+    // =====================
+
+    const params = new URLSearchParams(window.location.search);
+    const tamu = params.get("to");
+
+    const guestName =
+        document.getElementById("guestName");
+
+    if (tamu && guestName) {
+
+        guestName.innerHTML =
+            "Kepada Yth.<br><b>" +
+            decodeURIComponent(tamu) +
+            "</b>";
     }
 
-    var target = new Date("July 3, 2026 08:00:00").getTime();
-    var now = new Date().getTime();
-    var diff = target - now;
+    // =====================
+    // COUNTDOWN
+    // =====================
 
-    if (diff <= 0) {
-        el.innerHTML = "Hari Bahagia Telah Tiba";
-        return;
+    const targetDate =
+        new Date("2026-07-03T10:00:00").getTime();
+
+    function updateCountdown() {
+
+        const now =
+            new Date().getTime();
+
+        const distance =
+            targetDate - now;
+
+        if (distance < 0) {
+
+            document.getElementById("days").textContent = "0";
+            document.getElementById("hours").textContent = "0";
+            document.getElementById("minutes").textContent = "0";
+            document.getElementById("seconds").textContent = "0";
+
+            return;
+        }
+
+        const days =
+            Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        const hours =
+            Math.floor(
+                (distance % (1000 * 60 * 60 * 24))
+                /
+                (1000 * 60 * 60)
+            );
+
+        const minutes =
+            Math.floor(
+                (distance % (1000 * 60 * 60))
+                /
+                (1000 * 60)
+            );
+
+        const seconds =
+            Math.floor(
+                (distance % (1000 * 60))
+                /
+                1000
+            );
+
+        const dayEl =
+            document.getElementById("days");
+
+        const hourEl =
+            document.getElementById("hours");
+
+        const minuteEl =
+            document.getElementById("minutes");
+
+        const secondEl =
+            document.getElementById("seconds");
+
+        if (dayEl) dayEl.textContent = days;
+        if (hourEl) hourEl.textContent = hours;
+        if (minuteEl) minuteEl.textContent = minutes;
+        if (secondEl) secondEl.textContent = seconds;
     }
 
-    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    updateCountdown();
 
-    el.innerHTML =
-        days + " Hari " +
-        hours + " Jam " +
-        minutes + " Menit " +
-        seconds + " Detik";
-}
+    setInterval(updateCountdown, 1000);
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+    // =====================
+    // MUSIC BUTTON
+    // =====================
 
-var params = new URLSearchParams(window.location.search);
-var tamu = params.get("to");
+    const music =
+        document.getElementById("bgmusic");
 
-if (tamu) {
+    const musicBtn =
+        document.getElementById("musicBtn");
 
-    var guest = document.getElementById("guestName");
+    let playing = false;
 
-    if (guest) {
-        guest.innerHTML =
-            "Kepada Yth.<br><b>" + tamu + "</b>";
+    if (musicBtn && music) {
+
+        musicBtn.addEventListener("click", function () {
+
+            if (playing) {
+
+                music.pause();
+
+                musicBtn.innerHTML = "♪";
+
+                playing = false;
+
+            } else {
+
+                music.play().catch(function () {});
+
+                musicBtn.innerHTML = "❚❚";
+
+                playing = true;
+            }
+        });
     }
-}
 
-var petalsContainer = document.querySelector(".petals");
+    // =====================
+    // PETALS
+    // =====================
 
-function createPetal() {
+    const petalsContainer =
+        document.querySelector(".petals");
 
-    if (!petalsContainer) {
-        return;
+    function createPetal() {
+
+        if (!petalsContainer) return;
+
+        const petal =
+            document.createElement("div");
+
+        petal.className = "petal";
+
+        petal.style.left =
+            Math.random() * 100 + "vw";
+
+        petal.style.opacity =
+            (0.4 + Math.random() * 0.6);
+
+        petal.style.animationDuration =
+            (8 + Math.random() * 5) + "s";
+
+        petalsContainer.appendChild(petal);
+
+        setTimeout(function () {
+
+            petal.remove();
+
+        }, 13000);
     }
 
-    var petal = document.createElement("div");
-
-    petal.className = "petal";
-
-    petal.style.left =
-        (Math.random() * 100) + "vw";
-
-    petal.style.animationDuration =
-        (8 + Math.random() * 5) + "s";
-
-    petalsContainer.appendChild(petal);
-
-    setTimeout(function () {
-        petal.remove();
-    }, 13000);
-}
-
-setInterval(createPetal, 600);
+    setInterval(createPetal, 600);
+});
