@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="id">
 <head>
 <meta charset="UTF-8">
@@ -17,33 +18,29 @@
     <source src="music.mp3" type="audio/mpeg">
 </audio>
 
-<div class="petals"></div>
-
 <section id="cover">
 
-    <div class="cover-content">
+```
+<div class="cover-content">
 
-        <p class="small">
-            THE WEDDING OF
-        </p>
+    <p class="small">THE WEDDING OF</p>
 
-        <h1>
-            Reza & Aida
-        </h1>
+    <h1>Reza & Aida</h1>
 
-        <div id="guestName">
-            Kepada Yth.
-        </div>
-
-        <p class="date">
-            03 Juli 2026
-        </p>
-
-        <button onclick="openInvite()">
-            Buka Undangan
-        </button>
-
+    <div id="guestName">
+        Kepada Yth. Bapak/Ibu/Saudara/i
     </div>
+
+    <p class="date">
+        03 Juli 2026
+    </p>
+
+    <button onclick="openInvite()">
+        Buka Undangan
+    </button>
+
+</div>
+```
 
 </section>
 
@@ -51,131 +48,117 @@
 
 <section class="hero">
 
-    <h2>
-        Assalamu'alaikum Warahmatullahi Wabarakatuh
-    </h2>
+```
+<h2>Assalamu'alaikum Warahmatullahi Wabarakatuh</h2>
 
-    <p>
-        Dengan memohon rahmat dan ridho Allah SWT,
-        kami mengundang Bapak/Ibu/Saudara/i
-        untuk hadir pada acara pernikahan kami.
-    </p>
+<p>
+    Dengan memohon rahmat dan ridho Allah SWT,
+    kami mengundang Bapak/Ibu/Saudara/i untuk hadir
+    pada acara pernikahan kami.
+</p>
+```
 
 </section>
 
 <section class="couple">
 
-    <div>
+```
+<div>
+    <h2 class="name">
+        Mochamad Reza<br>Febriansyah
+    </h2>
 
-        <h2 class="name">
-            Mochamad Reza
-            <br>
-            Febriansyah
-        </h2>
+    <p>
+        Putra dari Ibu Elly Sri Herliani
+    </p>
+</div>
 
-        <p>
-            Putra dari Ibu Elly Sri Herliani
-        </p>
+<div class="and">&</div>
 
-    </div>
+<div>
+    <h2 class="name">
+        Nuraida<br>Febriani
+    </h2>
 
-    <div class="and">&</div>
-
-    <div>
-
-        <h2 class="name">
-            Nuraida
-            <br>
-            Febriani
-        </h2>
-
-        <p>
-            Putri dari Bapak Muhamad Yasin
-            dan Ibu Rini
-        </p>
-
-    </div>
+    <p>
+        Putri dari Bapak Muhamad Yasin<br>
+        dan Ibu Rini
+    </p>
+</div>
+```
 
 </section>
 
 <section class="countdown-section">
 
-    <h2>Menuju Hari Bahagia</h2>
+```
+<h2>Menuju Hari Bahagia</h2>
 
-    <div id="countdown"></div>
+<div id="countdown"></div>
+```
 
 </section>
 
 <section class="events">
 
-    <div class="card">
+```
+<div class="card">
+    <h3>Akad Nikah</h3>
+    <p>Jumat, 03 Juli 2026</p>
+    <p>08.00 WIB</p>
+    <p>KUA Cinere</p>
+</div>
 
-        <h3>Akad Nikah</h3>
-
-        <p>Jumat, 03 Juli 2026</p>
-
-        <p>08.00 WIB</p>
-
-        <p>KUA Cinere</p>
-
-    </div>
-
-    <div class="card">
-
-        <h3>Selametan</h3>
-
-        <p>Jumat, 03 Juli 2026</p>
-
-        <p>13.00 WIB</p>
-
-        <p>
-            Jl. J. Salam No.49<br>
-            Pangkalan Jati<br>
-            Cinere, Depok
-        </p>
-
-    </div>
-
-</section>
-
-<section class="gallery">
-
-    <img src="foto1.jpg" alt="">
-    <img src="foto2.jpg" alt="">
-    <img src="foto3.jpg" alt="">
-    <img src="foto4.jpg" alt="">
+<div class="card">
+    <h3>Selametan</h3>
+    <p>Jumat, 03 Juli 2026</p>
+    <p>13.00 WIB</p>
+    <p>
+        Jl. J. Salam No.49<br>
+        Pangkalan Jati<br>
+        Cinere, Depok
+    </p>
+</div>
+```
 
 </section>
 
 <section class="gift">
 
-    <div class="card">
+```
+<h2>Hadiah Pernikahan</h2>
 
-        <h3>QRIS Reza</h3>
+<p>
+    Doa restu Anda merupakan hadiah terindah bagi kami.
+    Apabila berkenan memberikan tanda kasih:
+</p>
 
-        <img src="qris-reza.png" alt="QRIS Reza">
+<div class="card">
+    <h3>BSI</h3>
+    <p class="rekening">7166873589</p>
+    <p>a.n. Mochamad Reza Febriansyah</p>
+    <button onclick="copyReza()">Salin Rekening</button>
+</div>
 
-    </div>
-
-    <div class="card">
-
-        <h3>QRIS Aida</h3>
-
-        <img src="qris-aida.png" alt="QRIS Aida">
-
-    </div>
+<div class="card">
+    <h3>BSI</h3>
+    <p class="rekening">7324707098</p>
+    <p>a.n. Nuraida Febriani</p>
+    <button onclick="copyAida()">Salin Rekening</button>
+</div>
+```
 
 </section>
 
 <footer>
+    <h2>Terima Kasih</h2>
+    <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami atas kehadiran dan doa restunya.</p>
 
-    <h2>
-        Terima Kasih
-    </h2>
-
-    <div class="footer-name">
-        Reza & Aida
-    </div>
+```
+<div class="footer-name">
+    Reza & Aida
+</div>
+```
 
 </footer>
 
