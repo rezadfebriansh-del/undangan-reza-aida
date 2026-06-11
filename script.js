@@ -14,57 +14,67 @@ function openInvite() {
 
     if (main) {
         main.style.display = "block";
+        requestAnimationFrame(() => {
+            main.style.opacity = "1";
+        });
     }
 
     if (music) {
-        music.play().catch(function () {});
+        music.play().catch(() => {});
     }
 }
 
 // =========================
-// COPY REKENING
+// COPY REKENING SAFE
 // =========================
 
-function copyReza() {
+function copyBank(btn, number, label) {
 
-    navigator.clipboard.writeText("7166873589")
-    .then(function () {
-        alert("Nomor rekening Reza berhasil disalin");
-    })
-    .catch(function () {
-        alert("Gagal menyalin rekening");
-    });
-}
+    navigator.clipboard.writeText(number)
+        .then(() => {
 
-function copyAida() {
+            // ubah tombol langsung (INLINE)
+            const original = btn.textContent;
 
-    navigator.clipboard.writeText("7324707098")
-    .then(function () {
-        alert("Nomor rekening Aida berhasil disalin");
-    })
-    .catch(function () {
-        alert("Gagal menyalin rekening");
-    });
+            btn.textContent = "Copied ✓";
+            btn.style.background = "#1f1f1f";
+            btn.style.border = "1px solid #d4af37";
+            btn.style.color = "#d4af37";
+
+            btn.disabled = true;
+
+            // reset setelah 2 detik
+            setTimeout(() => {
+
+                btn.textContent = original;
+                btn.style.background = "";
+                btn.style.border = "";
+                btn.style.color = "";
+                btn.disabled = false;
+
+            }, 2000);
+
+        })
+        .catch(() => {
+            alert("Gagal menyalin");
+        });
 }
 
 // =========================
-// DOM LOADED
+// DOM READY
 // =========================
 
 document.addEventListener("DOMContentLoaded", function () {
 
     // =====================
-    // NAMA TAMU
+    // TAMU
     // =====================
 
     const params = new URLSearchParams(window.location.search);
     const tamu = params.get("to");
-
-    const guestName =
-        document.getElementById("guestName");
+    const guestName = document.getElementById("guestName");
 
     if (tamu && guestName) {
-
         guestName.innerHTML =
             "Kepada Yth.<br><b>" +
             decodeURIComponent(tamu) +
@@ -75,235 +85,185 @@ document.addEventListener("DOMContentLoaded", function () {
     // COUNTDOWN
     // =====================
 
-    const targetDate =
-        new Date("2026-07-03T10:00:00").getTime();
+    const targetDate = new Date("2026-07-03T10:00:00").getTime();
+
+    const d = document.getElementById("days");
+    const h = document.getElementById("hours");
+    const m = document.getElementById("minutes");
+    const s = document.getElementById("seconds");
 
     function updateCountdown() {
 
-        const now =
-            new Date().getTime();
+        const now = Date.now();
+        const distance = targetDate - now;
 
-        const distance =
-            targetDate - now;
-
-        if (distance < 0) {
-
-            document.getElementById("days").textContent = "0";
-            document.getElementById("hours").textContent = "0";
-            document.getElementById("minutes").textContent = "0";
-            document.getElementById("seconds").textContent = "0";
-
+        if (distance <= 0) {
+            if (d) d.textContent = 0;
+            if (h) h.textContent = 0;
+            if (m) m.textContent = 0;
+            if (s) s.textContent = 0;
             return;
         }
 
-        const days =
-            Math.floor(distance / (1000 * 60 * 60 * 24));
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        const hours =
-            Math.floor(
-                (distance % (1000 * 60 * 60 * 24))
-                /
-                (1000 * 60 * 60)
-            );
-
-        const minutes =
-            Math.floor(
-                (distance % (1000 * 60 * 60))
-                /
-                (1000 * 60)
-            );
-
-        const seconds =
-            Math.floor(
-                (distance % (1000 * 60))
-                /
-                1000
-            );
-
-        const dayEl =
-            document.getElementById("days");
-
-        const hourEl =
-            document.getElementById("hours");
-
-        const minuteEl =
-            document.getElementById("minutes");
-
-        const secondEl =
-            document.getElementById("seconds");
-
-        if (dayEl) dayEl.textContent = days;
-        if (hourEl) hourEl.textContent = hours;
-        if (minuteEl) minuteEl.textContent = minutes;
-        if (secondEl) secondEl.textContent = seconds;
+        if (d) d.textContent = days;
+        if (h) h.textContent = hours;
+        if (m) m.textContent = minutes;
+        if (s) s.textContent = seconds;
     }
 
     updateCountdown();
-
     setInterval(updateCountdown, 1000);
 
     // =====================
-    // MUSIC BUTTON
+    // MUSIC
     // =====================
 
-    const music =
-        document.getElementById("bgmusic");
-
-    const musicBtn =
-        document.getElementById("musicBtn");
+    const musicBtn = document.getElementById("musicBtn");
+    const music = document.getElementById("bgmusic");
 
     let playing = false;
 
     if (musicBtn && music) {
-
         musicBtn.addEventListener("click", function () {
 
             if (playing) {
-
                 music.pause();
-
-                musicBtn.innerHTML = "♪";
-
-                playing = false;
-
+                musicBtn.textContent = "♪";
             } else {
-
-                music.play().catch(function () {});
-
-                musicBtn.innerHTML = "❚❚";
-
-                playing = true;
+                music.play().catch(() => {});
+                musicBtn.textContent = "❚❚";
             }
+
+            playing = !playing;
         });
     }
 
     // =====================
-    // PETALS
+    // PETALS (SAFE)
     // =====================
 
-    const petalsContainer =
-        document.querySelector(".petals");
+    const container = document.querySelector(".petals");
 
-    function createPetal() {
+    if (container) {
 
-        if (!petalsContainer) return;
+        setInterval(() => {
 
-        const petal =
-            document.createElement("div");
+            const petal = document.createElement("div");
+            petal.className = "petal";
 
-        petal.className = "petal";
+            petal.style.left = Math.random() * 100 + "vw";
+            petal.style.opacity = 0.5;
+            petal.style.animationDuration = (6 + Math.random() * 4) + "s";
 
-        petal.style.left =
-            Math.random() * 100 + "vw";
+            container.appendChild(petal);
 
-        petal.style.opacity =
-            (0.4 + Math.random() * 0.6);
+            setTimeout(() => petal.remove(), 10000);
 
-        petal.style.animationDuration =
-            (8 + Math.random() * 5) + "s";
-
-        petalsContainer.appendChild(petal);
-
-        setTimeout(function () {
-
-            petal.remove();
-
-        }, 13000);
+        }, 700);
     }
-	renderWishes();
 
-    setInterval(createPetal, 600);
+    // =====================
+    // WISH SYSTEM INIT SAFE
+    // =====================
+
+    renderWishes();
 });
-function addWish(){
 
-```
-const name =
-    document.getElementById("wishName");
 
-const message =
-    document.getElementById("wishMessage");
+// =========================
+// WISH SYSTEM (FIXED)
+// =========================
 
-const list =
-    document.getElementById("wishList");
+function addWish() {
 
-if(!name || !message || !list) return;
+    const name = document.getElementById("wishName");
+    const message = document.getElementById("wishMessage");
 
-const nama =
-    name.value.trim();
+    if (!name || !message) return;
 
-const pesan =
-    message.value.trim();
+    const nama = name.value.trim();
+    const pesan = message.value.trim();
 
-if(nama === "" || pesan === ""){
-    return;
+    if (!nama || !pesan) return;
+
+    const wishes = JSON.parse(localStorage.getItem("wishes") || "[]");
+
+    wishes.unshift({
+        name: nama,
+        message: pesan
+    });
+
+    localStorage.setItem("wishes", JSON.stringify(wishes));
+
+    name.value = "";
+    message.value = "";
+
+    renderWishes();
 }
 
-const wish = {
-    name: nama,
-    message: pesan
-};
+function renderWishes() {
 
-const wishes =
-    JSON.parse(
-        localStorage.getItem("wishes") || "[]"
-    );
+    const list = document.getElementById("wishList");
+    if (!list) return;
 
-wishes.unshift(wish);
+    list.innerHTML = "";
 
-localStorage.setItem(
-    "wishes",
-    JSON.stringify(wishes)
-);
+    const wishes = JSON.parse(localStorage.getItem("wishes") || "[]");
 
-renderWishes();
+    wishes.forEach(wish => {
 
-name.value = "";
-message.value = "";
-```
+        const avatar = wish.name
+            ? wish.name.charAt(0).toUpperCase()
+            : "?";
 
+        const item = document.createElement("div");
+        item.className = "wish-item fade-in";
+
+        item.innerHTML = `
+            <div class="wish-top">
+                <div class="wish-avatar">${avatar}</div>
+                <div class="wish-name">${wish.name}</div>
+            </div>
+            <div class="wish-message">${wish.message}</div>
+        `;
+
+        list.appendChild(item);
+    });
 }
 
-function renderWishes(){
+function copyBank(number, label) {
+    navigator.clipboard.writeText(number)
+        .then(() => {
 
-```
-const list =
-    document.getElementById("wishList");
+            // feedback lebih premium dari alert
+            const toast = document.createElement("div");
 
-if(!list) return;
+            toast.textContent = label + " tersalin ✔";
 
-list.innerHTML = "";
+            toast.style.position = "fixed";
+            toast.style.bottom = "90px";
+            toast.style.right = "20px";
+            toast.style.background = "#d4af37";
+            toast.style.color = "#fff";
+            toast.style.padding = "12px 18px";
+            toast.style.borderRadius = "12px";
+            toast.style.boxShadow = "0 10px 25px rgba(0,0,0,0.2)";
+            toast.style.zIndex = "9999";
+            toast.style.fontWeight = "600";
 
-const wishes =
-    JSON.parse(
-        localStorage.getItem("wishes") || "[]"
-    );
+            document.body.appendChild(toast);
 
-wishes.forEach(function(wish){
+            setTimeout(() => {
+                toast.remove();
+            }, 2000);
 
-    const avatar =
-        wish.name.charAt(0).toUpperCase();
-
-    const item =
-        document.createElement("div");
-
-    item.className =
-        "wish-item fade-in";
-
-    item.innerHTML =
-        '<div class="wish-top">' +
-            '<div class="wish-avatar">' +
-                avatar +
-            '</div>' +
-            '<div class="wish-name">' +
-                wish.name +
-            '</div>' +
-        '</div>' +
-        '<div class="wish-message">' +
-            wish.message +
-        '</div>';
-
-    list.appendChild(item);
-});
-```
-
+        })
+        .catch(() => {
+            alert("Gagal menyalin");
+        });
 }
