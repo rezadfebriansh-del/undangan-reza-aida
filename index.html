@@ -1,345 +1,632 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Reza & Aida</title>
+    <!-- Font Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #bfa47d;
+            --secondary-color: #2d5a4a;
+            --bg-color: #f9f9f9;
+            --text-color: #4a4a4a;
+        }
 
-<title>Reza & Aida | 03 Juli 2026</title>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<link rel="stylesheet" href="style.css">
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+        h1, h2, h3 {
+            font-family: 'Great Vibes', cursive;
+            color: var(--primary-color);
+        }
+
+        /* Cover Section */
+        #cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            z-index: 9999;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        #cover.open {
+            transform: translateY(-100%);
+        }
+
+        .btn-buka {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+
+        /* Islamic Header Animation */
+        .islamic-header {
+            width: 100%;
+            max-height: 500px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e8ba3 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+
+        .islamic-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0z' fill='%23ffffff' fill-opacity='1'/%3E%3C/svg%3E");
+        }
+
+        .mosque-silhouette {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 150px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 300'%3E%3Cpath d='M0,300 L0,250 L50,250 L50,200 L100,200 L100,250 L150,250 L150,180 Q200,150 250,180 L250,250 L300,250 L300,200 L350,200 L350,250 L400,250 L400,150 Q450,100 500,150 L500,250 L550,250 L550,220 L600,220 L600,250 L650,250 L650,150 Q700,100 750,150 L750,250 L800,250 L800,200 L850,200 L850,250 L900,250 L900,180 Q950,150 1000,180 L1000,250 L1050,250 L1050,200 L1100,200 L1100,250 L1150,250 L1150,300 Z' fill='%231a3a52'/%3E%3Ccircle cx='600' cy='80' r='40' fill='%23ffd700' opacity='0.8'/%3E%3Cpath d='M600,30 L600,10 M590,20 L610,20' stroke='%23ffd700' stroke-width='3'/%3E%3C/svg%3E") no-repeat bottom;
+            background-size: cover;
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .crescent-moon {
+            position: absolute;
+            top: 40px;
+            right: 80px;
+            font-size: 60px;
+            color: #ffd700;
+            animation: rotate 10s linear infinite;
+        }
+
+        .star {
+            position: absolute;
+            color: #ffd700;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .star:nth-child(1) { top: 60px; left: 10%; font-size: 20px; animation-delay: 0s; }
+        .star:nth-child(2) { top: 100px; left: 20%; font-size: 15px; animation-delay: 0.5s; }
+        .star:nth-child(3) { top: 50px; right: 25%; font-size: 18px; animation-delay: 1s; }
+        .star:nth-child(4) { top: 120px; right: 15%; font-size: 12px; animation-delay: 1.5s; }
+
+        .header-text {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+        }
+
+        .header-text h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header-text h1 {
+            color: #ffd700;
+            font-size: 4rem;
+            margin: 10px 0;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
+        }
+
+        .header-text p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mempelai-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            margin: 15px 0;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin: 10px 0;
+        }
+
+        .rekening {
+            background: #fff;
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rekening::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .rekening-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .rekening-logo {
+            width: 80px;
+            height: auto;
+        }
+
+        .rekening h4 {
+            color: var(--secondary-color);
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        .rekening-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .rekening-name {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .btn-copy {
+            padding: 8px 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-copy:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .wa-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            min-width: 250px;
+            border: 2px solid #25D366;
+        }
+
+        .wa-card i {
+            font-size: 3rem;
+            color: #25D366;
+            margin-bottom: 10px;
+        }
+
+        .wa-card h4 {
+            color: var(--secondary-color);
+            margin: 10px 0;
+        }
+
+        .wa-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn-wa {
+            display: inline-block;
+            padding: 10px 25px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-wa:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Countdown */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .time-box {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 70px;
+        }
+        .time-box span {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+        .time-box small {
+            font-size: 0.8rem;
+        }
+
+        /* Form Ucapan */
+        .form-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .form-container iframe {
+            display: block;
+            width: 100%;
+            height: 650px;
+            border: none;
+        }
+
+        /* Floating Music Button */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 1000;
+            color: var(--primary-color);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .mempelai-img { width: 120px; height: 120px; }
+            .header-text h1 { font-size: 2.8rem; }
+            .header-text h2 { font-size: 1.8rem; }
+            .form-container iframe { height: 700px; }
+            .rekening-number { font-size: 1.4rem; }
+        }
+    </style>
 </head>
-
 <body>
 
-<audio id="bgmusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
-</audio>
+    <!-- Musik Latar -->
+    <audio id="bg-music" loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
 
-<button id="musicBtn" class="music-btn" type="button">
-    ♪
-</button>
-
-<div class="petals"></div>
-
-<section id="cover">
-
-    <div class="cover-content">
-
-        <div class="ornament">❦</div>
-
-        <p class="small">
-            Wedding Invitation
-        </p>
-
-        <h1>
-            Reza & Aida
-        </h1>
-
-        <div id="guestName">
-            Kepada Yth. Bapak/Ibu/Saudara/i
-        </div>
-
-        <p class="date">
-            Jumat, 03 Juli 2026
-        </p>
-
-        <button type="button" onclick="openInvite()">
-            ✨ Buka Undangan
+    <!-- Cover Depan -->
+    <div id="cover">
+        <h3>The Wedding Of</h3>
+        <h1 style="font-size: 3.5rem; margin: 10px 0;">Reza & Aida</h1>
+        <p>Jumat, 3 Juli 2026</p>
+        <button class="btn-buka" onclick="bukaUndangan()">
+            <i class="fas fa-envelope-open"></i> Buka Undangan
         </button>
-
     </div>
 
-</section>
+    <!-- Konten Utama -->
+    <div class="container">
+        
+		<!-- Header dengan Background -->
+		<section id="home" style="border: none; padding: 0;" class="header-elegant">
+			<h2 style="color: #8B7355; font-size: 2rem; margin-bottom: 10px; letter-spacing: 3px; font-family: 'Work Sans', sans-serif; font-weight: 300;">The Wedding Of</h2>
+			<h1 style="color: #BFA47D; font-size: 4.5rem; margin: 10px 0;">Reza & Aida</h1>
+			<p style="font-size: 1.3rem; margin-top: 10px; color: #6B5B4F;">Jumat, 3 Juli 2026</p>
+			<div style="width: 100px; height: 2px; background: linear-gradient(90deg, transparent, #BFA47D, transparent); margin: 30px auto;"></div>
+			<p style="max-width: 600px; margin: 20px auto; font-size: 1rem; font-style: italic; line-height: 1.8; padding: 0 20px; color: #6B5B4F;">
+				"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu istri-istri dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya."
+			</p>
+			<p style="font-size: 0.9rem; margin-top: 10px; font-weight: 600; color: #8B7355;">(QS. Ar-Rum: 21)</p>
+		</section>
+        <!-- Mempelai -->
+        <section id="couple">
+            <h2>Mempelai</h2>
+            
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:30px; margin-top:30px;">
+                <div>
+                    <img src="me.jpeg" alt="Mempelai Pria" class="mempelai-img">
+                    <h3>Mochamad Reza Febriansyah</h3>
+                    <p>Putra dari Ibu Elly Sri Herliani<br>& Bpk. P. David Moch. Daud</p>
+                </div>
+                <div style="font-size: 2rem; color:var(--primary-color); display:flex; align-items:center;">&</div>
+                <div>
+                    <img src="you.jpeg" alt="Mempelai Wanita" class="mempelai-img">
+                    <h3>Nuraida Febriani</h3>
+                    <p>Putri dari Bpk. Muhamad Yasin<br>& Ibu Rini</p>
+                </div>
+            </div>
+        </section>
 
-<main id="main">
-
-    <section class="hero">
-
-        <div class="ornament">❦</div>
-
-        <h2>
-            Assalamu'alaikum Warahmatullahi Wabarakatuh
-        </h2>
-
-        <p>
-            Dengan memohon rahmat dan ridho Allah SWT,
-            kami mengundang Bapak/Ibu/Saudara/i
-            untuk hadir pada acara pernikahan kami.
-        </p>
-
-    </section>
-
-    <section class="couple">
-
-        <div class="person">
-
-            <div class="photo-placeholder"></div>
-
-            <h2 class="name">
-                Mochamad Reza<br>
-                Febriansyah
-            </h2>
-
-            <p>
-                Putra dari Ibu Elly Sri Herliani
-            </p>
-
-        </div>
-
-        <div class="and">&</div>
-
-        <div class="person">
-
-            <div class="photo-placeholder"></div>
-
-            <h2 class="name">
-                Nuraida<br>
-                Febriani
-            </h2>
-
-            <p>
-                Putri dari Bapak Muhamad Yasin<br>
-                dan Ibu Rini
-            </p>
-
-        </div>
-
-    </section>
-
-    <section class="countdown-section">
-
-        <div class="ornament">❦</div>
-
-        <h2>
-            Menuju Hari Bahagia
-        </h2>
-
-        <div class="countdown-boxes">
-
-            <div class="time-box">
-                <span id="days">0</span>
-                <small>Hari</small>
+        <!-- Acara -->
+        <section id="event">
+            <h2>Acara Pernikahan</h2>
+            
+            <div class="card">
+                <h3>Akad Nikah</h3>
+                <p><i class="far fa-calendar-alt"></i> Jumat, 03 Juli 2026</p>
+                <p><i class="far fa-clock"></i> 10.00 WIB - Selesai</p>
+                <p><i class="fas fa-map-marker-alt"></i> KUA Cinere</p>
+                <a href="https://maps.google.com/?q=KUA+Cinere" target="_blank" style="color:var(--primary-color); text-decoration:none; font-weight:bold;">
+                    <i class="fas fa-map-marked-alt"></i> Lihat Lokasi
+                </a>
             </div>
 
-            <div class="time-box">
-                <span id="hours">0</span>
-                <small>Jam</small>
+            <div class="card">
+                <h3>Resepsi</h3>
+                <p><i class="far fa-calendar-alt"></i> Jumat, 03 Juli 2026</p>
+                <p><i class="far fa-clock"></i> 13.00 WIB - Selesai</p>
+                <p><i class="fas fa-map-marker-alt"></i> Jl. H. Salam No.49, Pangkalan Jati, Cinere, Depok</p>
+                <a href="https://maps.google.com/?q=Jl.+H.+Salam+No.49+Pangkalan+Jati+Cinere+Depok" target="_blank" style="color:var(--primary-color); text-decoration:none; font-weight:bold;">
+                    <i class="fas fa-map-marked-alt"></i> Lihat Lokasi
+                </a>
             </div>
 
-            <div class="time-box">
-                <span id="minutes">0</span>
-                <small>Menit</small>
+            <!-- Countdown -->
+            <h3 style="margin-top:30px;">Menghitung Hari</h3>
+            <div id="countdown">
+                <div class="time-box"><span id="days">00</span><br><small>Hari</small></div>
+                <div class="time-box"><span id="hours">00</span><br><small>Jam</small></div>
+                <div class="time-box"><span id="minutes">00</span><br><small>Menit</small></div>
+                <div class="time-box"><span id="seconds">00</span><br><small>Detik</small></div>
+            </div>
+        </section>
+
+        <!-- Amplop Digital -->
+        <section id="gift">
+            <h2>Amplop Digital</h2>
+            <p>Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika memberi adalah ungkapan tanda kasih Anda, Anda dapat memberi kado secara cashless.</p>
+            
+            <!-- BSI Reza -->
+            <div class="rekening">
+                <div class="rekening-header">
+                    <svg class="rekening-logo" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="60" fill="#003366" rx="5"/>
+                        <text x="50" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">BSI</text>
+                    </svg>
+                    <h4>Bank Syariah Indonesia</h4>
+                </div>
+                <div class="rekening-number">7166873589</div>
+                <div class="rekening-name">a.n. Mochamad Reza Febriansyah</div>
+                <button onclick="copyText('7166873589')" class="btn-copy">
+                    <i class="far fa-copy"></i> Salin No. Rek
+                </button>
             </div>
 
-            <div class="time-box">
-                <span id="seconds">0</span>
-                <small>Detik</small>
+            <!-- BSI Aida -->
+            <div class="rekening">
+                <div class="rekening-header">
+                    <svg class="rekening-logo" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="100" height="60" fill="#003366" rx="5"/>
+                        <text x="50" y="35" font-family="Arial" font-size="18" font-weight="bold" fill="white" text-anchor="middle">BSI</text>
+                    </svg>
+                    <h4>Bank Syariah Indonesia</h4>
+                </div>
+                <div class="rekening-number">7324707098</div>
+                <div class="rekening-name">a.n. Nuraida Febriani</div>
+                <button onclick="copyText('7324707098')" class="btn-copy">
+                    <i class="far fa-copy"></i> Salin No. Rek
+                </button>
             </div>
+        </section>
 
-        </div>
+        <!-- Ucapan & Doa (Google Form) -->
+        <section id="wishes">
+            <h2>Ucapan & Doa</h2>
+            <p>Kirimkan ucapan dan doa restu untuk mempelai melalui formulir di bawah ini:</p>
+            
+            <div class="form-container">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeo2Eo7DvvrpEBFMSdihhl7spWspdM7AqVADobmIe3gPhX5eA/viewform?usp=publish-editor" width="100%" height="650px" frameborder="0" marginheight="0" marginwidth="0">Memuat formulir…</iframe>
+            </div>
+        </section>
 
-    </section>
+        <!-- RSVP / WhatsApp -->
+        <section id="rsvp">
+            <h2>Konfirmasi Kehadiran</h2>
+            <p>Silakan konfirmasi kehadiran Anda kepada kami melalui WhatsApp:</p>
+            
+            <div class="whatsapp-section">
+                <div class="wa-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>Mochamad Reza Febriansyah</h4>
+                    <p>+62 817-0220-001</p>
+                    <a href="https://wa.me/628170220001?text=Assalamu'alaikum%20Reza,%20saya%20akan%20hadir%20di%20pernikahan%20anda" target="_blank" class="btn-wa">
+                        <i class="fab fa-whatsapp"></i> Chat Reza
+                    </a>
+                </div>
+                
+                <div class="wa-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>Nuraida Febriani</h4>
+                    <p>+62 858-1000-8650</p>
+                    <a href="https://wa.me/6285810008650?text=Assalamu'alaikum%20Aida,%20saya%20akan%20hadir%20di%20pernikahan%20anda" target="_blank" class="btn-wa">
+                        <i class="fab fa-whatsapp"></i> Chat Aida
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <section class="events">
-
-        <div class="card">
-
-            <div class="event-icon">🕌</div>
-
-            <h3>Akad Nikah</h3>
-
-            <p>Jumat, 03 Juli 2026</p>
-
-            <p>10.00 WIB - Selesai</p>
-
-            <p>KUA Cinere</p>
-
-        </div>
-
-        <div class="card">
-
-            <div class="event-icon">🏡</div>
-
-            <h3>Resepsi</h3>
-
-            <p>Jumat, 03 Juli 2026</p>
-
-            <p>13.00 WIB - Selesai</p>
-
-            <p>
-                Jl. H. Salam No.49<br>
-                Pangkalan Jati<br>
-                Cinere, Depok
-            </p>
-
-            <br>
-
-            <a
-            class="map-btn"
-            href="https://goo.gl/maps/hSpFQMkFGRuxG2uR8"
-            target="_blank">
-                📍 Buka Lokasi
-            </a>
-
-        </div>
-
-    </section>
-
-    <section class="rsvp-section">
-
-        <div class="ornament">❦</div>
-
-        <h2>
-            Konfirmasi Kehadiran
-        </h2>
-
-        <p>
-            Kami akan sangat berbahagia apabila
-            Bapak/Ibu/Saudara/i berkenan hadir.
-        </p>
-
-        <div class="rsvp-buttons">
-
-            <a
-            class="wa-btn"
-            href="https://wa.me/628170220001"
-            target="_blank">
-                WhatsApp Reza
-            </a>
-
-            <a
-            class="wa-btn"
-            href="https://wa.me/6285810008650"
-            target="_blank">
-                WhatsApp Aida
-            </a>
-
-        </div>
-
-    </section>
-
-	<section class="wishes-section">
-
-		<div class="ornament">❦</div>
-
-		<h2>
-			Ucapan & Doa
-		</h2>
-
-		<p>
-			Tinggalkan ucapan dan doa terbaik
-			untuk kami.
-		</p>
-
-		<div class="wish-form">
-
-			<input
-			type="text"
-			id="wishName"
-			placeholder="Nama Anda">
-
-			<textarea
-			id="wishMessage"
-			placeholder="Tulis ucapan atau doa..."></textarea>
-
-			<button
-			type="button"
-			onclick="addWish()">
-				Kirim Ucapan
-			</button>
-
-		</div>
-
-		<div id="wishList" class="wish-list">
-
-		</div>
-
-	</section>
-
-
-	<section class="gift">
-
-    <div class="gift-header">
-        <div class="ornament">❦</div>
-        <h2>Wedding Gift</h2>
-        <p class="gift-text">
-            Dengan penuh rasa syukur, kami menerima doa dan tanda kasih Bapak/Ibu/Saudara/i.
-        </p>
+        <footer style="padding:20px; font-size:0.8rem; color:#888;">
+            <p>Made with ❤️ for Reza & Aida</p>
+        </footer>
     </div>
 
-    <div class="gift-cards">
-
-        <!-- CARD 1 -->
-        <div class="bank-card">
-
-            <div class="bank-top">
-                <div class="chip"></div>
-                <div class="bank-name">Bank Syariah Indonesia</div>
-            </div>
-
-            <div class="bank-number" id="rekReza">
-                7166873589
-            </div>
-
-            <div class="bank-owner">
-                a.n. Mochamad Reza Febriansyah
-            </div>
-
-            <button class="copy-btn" onclick="copyBank(this,'7166873589','Rekening Reza')">
-                Copy Number
-            </button>
-
-        </div>
-
-        <!-- CARD 2 -->
-        <div class="bank-card">
-
-            <div class="bank-top">
-                <div class="chip"></div>
-                <div class="bank-name">Bank Syariah Indonesia</div>
-            </div>
-
-            <div class="bank-number">
-                7324707098
-            </div>
-
-            <div class="bank-owner">
-                a.n. Nuraida Febriani
-            </div>
-
-            <button class="copy-btn" onclick="copyBank(this,'7324707098','Rekening Aida')">
-                Copy Number
-            </button>
-
-        </div>
-
+    <!-- Tombol Musik -->
+    <div id="music-control" onclick="toggleMusic()">
+        <i class="fas fa-music"></i>
     </div>
 
-	</section>	
+    <script>
+        // Fungsi Buka Undangan
+        function bukaUndangan() {
+            document.getElementById('cover').classList.add('open');
+            document.getElementById('music-control').style.display = 'flex';
+            playMusic();
+        }
 
-    <footer>
+        // Kontrol Musik
+        var audio = document.getElementById("bg-music");
+        var isPlaying = false;
 
-        <p class="quote">
-            "Dan di antara tanda-tanda kekuasaan-Nya,
-            Dia menciptakan untukmu pasangan hidup
-            dari jenismu sendiri."
-        </p>
+        function playMusic() {
+            audio.play().catch(error => {
+                console.log("Autoplay prevented:", error);
+            });
+            isPlaying = true;
+        }
 
-        <p>
-            QS. Ar-Rum : 21
-        </p>
+        function toggleMusic() {
+            var icon = document.querySelector('#music-control i');
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                icon.classList.remove('fa-music');
+                icon.classList.add('fa-pause');
+            } else {
+                audio.play();
+                isPlaying = true;
+                icon.classList.remove('fa-pause');
+                icon.classList.add('fa-music');
+            }
+        }
 
-        <div class="footer-name">
-            Reza & Aida
-        </div>
+        // Copy Rekening
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Nomor rekening berhasil disalin: " + text);
+            }).catch(err => {
+                console.error('Gagal menyalin:', err);
+                alert("Silakan salin manual: " + text);
+            });
+        }
 
-    </footer>
+        // Countdown Timer
+        var countDownDate = new Date("2026-07-03T10:00:00+07:00").getTime();
 
-</main>
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
 
-<script src="script.js"></script>
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<h3 style='color:var(--primary-color);'>Alhamdulillah, Acara Telah Tiba!</h3>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
